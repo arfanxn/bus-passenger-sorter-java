@@ -12,8 +12,9 @@ public class Main {
     private static final Scanner scannerInput = new Scanner(System.in);
 
     public static void main(String[] args) {
-//        String[] employees = {"C01XX" , "J02XX" , "N03XX" , "P04XX"};
+        String[] employees = {"C01XX" , "J02XX" , "N03XX" , "P04XX"};
 //        countBusPassengersOnEachLevel(employees);
+        countBusPassengersOnEachLevel(employees);
     }
 
     private static void countBusPassengersOnEachLevel (String[] passengers) {
@@ -48,13 +49,12 @@ public class Main {
                staffLevel += 1;
            }
 
-
-           System.out.println("Total TopLevel : " + topLevel);
-           System.out.println("Total MiddleLevel : " + middleLevel);
-           System.out.println("Total RegularStaffLevel : " + regularStaffLevel);
-           System.out.println("Total StaffLevel : " + staffLevel);
-
         }
+
+        System.out.println("Total TopLevel : " + topLevel);
+        System.out.println("Total MiddleLevel : " + middleLevel);
+        System.out.println("Total RegularStaffLevel : " + regularStaffLevel);
+        System.out.println("Total StaffLevel : " + staffLevel);
     }
 
 
