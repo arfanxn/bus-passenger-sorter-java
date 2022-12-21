@@ -4,67 +4,91 @@
 //
 
 import javax.sound.midi.Soundbank;
+import javax.swing.*;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Scanner;
 import static java.lang.Character.*;
 
 public class Main {
     private static final Scanner scannerInput = new Scanner(System.in);
-
     public static void main(String[] args) {
-        String[] employees = {"C01XX" , "J02XX" , "N03XX" , "P04XX"};
-//        countBusPassengersOnEachLevel(employees);
-        countBusPassengersOnEachLevel(employees);
+        ArrayList<int[]> transjakarta = new ArrayList<int[]>() ;
+
+        transjakarta.add(0, new int[]{10,0});
+        transjakarta.add(1, new int[]{3,5});
+        transjakarta.add(2, new int[]{5,0});
+
+        System.out.println(getTotalPassenger(transjakarta));
     }
 
-    private static void countBusPassengersOnEachLevel (String[] passengers) {
-        String[] busInfo = {"01-TopLevel", "02-MiddleLevel", "03-RegularStaff", "04-Staff"};
-        int topLevel = 0 ;
-        int middleLevel = 0 ;
-        int regularStaffLevel = 0 ;
-        int staffLevel = 0 ;
+    private static int getTotalPassenger (ArrayList<int[]> bus) {
+        int totalPassengers = 0 ;
+        for (int[] passangers : bus) {
+            totalPassengers += passangers[0];
+            totalPassengers -= passangers[1];
+        }
+        return totalPassengers ;
+    }
 
-        for(int i = 0; i < passengers.length ; i++) {
-           String passenger = passengers[i] ;
-           char firstChar = passenger.charAt(0);
-           char firstCharOfNIK = passenger.charAt(2);
 
-           if (
-                   (Character.compare(firstChar ,'C') == 0)
-                        && (Character.compare(firstCharOfNIK ,'1') == 0)
-           ) {
-                topLevel += 1;
-           }
-           else if(
-                   (Character.compare(firstChar ,'J') == 0)
-                   && (Character.compare(firstCharOfNIK ,'2') == 0)
-           ){
-               middleLevel += 1;
-           } else if(
-                   (Character.compare(firstChar ,'N') == 0)
-                           && (Character.compare(firstCharOfNIK ,'3') == 0)
-           ){
-               regularStaffLevel += 1;
-           } else {
-               staffLevel += 1;
-           }
+    public static int sumBaris (int number) {
 
+//        int  result = 0 ;
+//        for(int i = 0; i < number; i++) {
+//            result += number;
+//        }
+//
+//        System.out.println(result);
+
+        int result = (number * number * number);
+
+        System.out.println(result);
+
+        return  result;
+
+        /*
+           ArrayList<ArrayList<Integer>> nestedNumbers = new ArrayList<ArrayList<Integer>>();
+        nestedNumbers.get(0).add(1);
+
+        for(int i = 0; i < number ; i++) {
+
+            ArrayList<Integer> numbers =  new ArrayList<Integer>();
+
+            System.out.println(numbers);
+
+            for(int j = 0; j < number; j++) {
+                int result = (j >= 0 ? numbers.get(j - 1) : 0) + 2;
+                numbers.add(j, result);
+            }
+
+            System.out.println(numbers);
         }
 
-        System.out.println("Total TopLevel : " + topLevel);
-        System.out.println("Total MiddleLevel : " + middleLevel);
-        System.out.println("Total RegularStaffLevel : " + regularStaffLevel);
-        System.out.println("Total StaffLevel : " + staffLevel);
+        return  number;
+        */
     }
 
+   /*
+    private static void rowSumOddNumbers(int n) {
+        int lastNum = 0;
+        int total = 0 ;
+        for(int row = 1; row <= n; row++) {
+            total = 0;
+            for(int xRow = 0; xRow <= row; xRow++) {
+                if (row > 1) {
+                    lastNum += 2;
+                    System.out.println(lastNum);
+                    total += lastNum;
+                } else {
+                    System.out.println(xRow);
+                    lastNum = xRow;
+                    total = 1;
+                }
+            }
 
-    private static void roundUp (float[] floats) {
-        int[] roundedUps = new int[floats.length];
-
-        for(int i = 0; i < floats.length; i++) {
-            float floatNum = floats[i] ;
-            System.out.println(Math.round(floatNum));
+            System.out.println("TOTAL : " + total);
         }
     }
-
+   */
 }
